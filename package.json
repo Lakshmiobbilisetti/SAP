@@ -1,0 +1,30 @@
+{
+  "name": "sap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:login": "npx playwright test 01-fiori-login",
+    "test:po": "npx playwright test 02-create-purchase-order-fiori",
+    "test:all": "npx playwright test",
+    "report": "npx playwright show-report",
+    "test:e2e": "npx playwright test 03-po-creation-e2e",
+    "db:setup": "mysql -u root -p < db/setup.sql",
+    "db:push": "node db/push-results-to-mysql.js",
+    "allure:generate": "npx allure generate allure-results --clean -o allure-report && npx allure open allure-report",
+    "dashboard": "cd dashboard && node server.js",
+    "s3:push": "node db/push-to-s3.js",
+    "run:full": "npx playwright test 03-po-creation-e2e && node db/push-results-to-mysql.js && npx allure generate allure-results --clean -o allure-report && node db/push-to-s3.js && cd dashboard && start node server.js && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1014.0",
+    "@playwright/test": "^1.58.2",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.6.0",
+    "mysql2": "^3.20.0"
+  }
+}

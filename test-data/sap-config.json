@@ -1,0 +1,11 @@
+{
+  "environment": {
+    "url": "https://44.197.54.157:44300/sap/bc/gui/sap/its/webgui?sap-client=100",
+    "client": "100",
+    "system": "S4H"
+  },
+  "credentials": {
+    "username": "VOLTUS",
+    "password": "Apple#123$"
+  }
+}

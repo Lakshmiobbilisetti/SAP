@@ -1,0 +1,233 @@
+{
+  "environment": {
+    "url": "https://44.197.54.157:44300/sap/bc/gui/sap/its/webgui?sap-client=100",
+    "client": "100",
+    "language": "EN",
+    "transaction": "ME21N"
+  },
+  "credentials": {
+    "username": "VOLTUS",
+    "password": "Apple#123$"
+  },
+  "testCases": [
+    {
+      "testCaseId": "PO_TC_001",
+      "description": "Create Standard Purchase Order - Single Line Item",
+      "type": "positive",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "10",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedResult": "PO created successfully with 10-digit PO number"
+    },
+    {
+      "testCaseId": "PO_TC_002",
+      "description": "Create Standard Purchase Order - Multiple Line Items",
+      "type": "positive",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "5",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "50.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        },
+        {
+          "material": "TG12",
+          "shortText": "Trading Goods 12",
+          "poQuantity": "20",
+          "orderUnit": "PC",
+          "delivDate": "04/28/2026",
+          "netPrice": "75.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedResult": "PO created successfully with 2 line items"
+    },
+    {
+      "testCaseId": "PO_TC_003",
+      "description": "Create Standard Purchase Order - High Value",
+      "type": "positive",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11 - Bulk Order",
+          "poQuantity": "1000",
+          "orderUnit": "PC",
+          "delivDate": "05/15/2026",
+          "netPrice": "5000.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedResult": "PO created successfully"
+    },
+    {
+      "testCaseId": "PO_TC_004",
+      "description": "Negative Test - Create PO without Supplier",
+      "type": "negative",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "10",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedError": "Enter a supplier"
+    },
+    {
+      "testCaseId": "PO_TC_005",
+      "description": "Negative Test - Create PO with Zero Quantity",
+      "type": "negative",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "0",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedError": "Quantity must be greater than zero"
+    },
+    {
+      "testCaseId": "PO_TC_006",
+      "description": "Negative Test - Create PO with Invalid Material",
+      "type": "negative",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "INVALID_MAT_999",
+          "shortText": "Invalid Material Test",
+          "poQuantity": "10",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedError": "Material INVALID_MAT_999 does not exist"
+    },
+    {
+      "testCaseId": "PO_TC_007",
+      "description": "Negative Test - Create PO without Purchasing Org",
+      "type": "negative",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "10",
+          "orderUnit": "PC",
+          "delivDate": "04/21/2026",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedError": "Enter purchasing organization"
+    },
+    {
+      "testCaseId": "PO_TC_008",
+      "description": "Negative Test - Create PO with Past Delivery Date",
+      "type": "negative",
+      "header": {
+        "orderType": "Standard PO",
+        "supplier": "17300001",
+        "purchOrg": "1710",
+        "purchGroup": "001",
+        "companyCode": "1710"
+      },
+      "items": [
+        {
+          "material": "TG11",
+          "shortText": "Trading Goods 11",
+          "poQuantity": "10",
+          "orderUnit": "PC",
+          "delivDate": "01/01/2020",
+          "netPrice": "100.00",
+          "currency": "USD",
+          "plant": "1710",
+          "storLocation": "171A"
+        }
+      ],
+      "expectedError": "Delivery date is in the past"
+    }
+  ]
+}
