@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2/promise');
-const dbConfig = require('./config');
+const dbConfig = require('./mysql-config');
 
 const ALLURE_RESULTS_DIR = path.join(__dirname, '..', 'allure-results');
 
