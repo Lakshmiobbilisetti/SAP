@@ -12,5 +12,8 @@ screenshots/
 .env
 db/.env
 
+# MCP logs
+.playwright-mcp/
+
 # misc
 .DS_Store
